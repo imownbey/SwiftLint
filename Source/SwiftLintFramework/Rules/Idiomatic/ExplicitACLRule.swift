@@ -80,7 +80,7 @@ public struct ExplicitACLRule: OptInRule, ConfigurationProviderRule, AutomaticTe
         let violations = offsetOfElements(from: implicitAndExplicitInternalElements, in: file,
                                           thatAreNotInRanges: explicitInternalRanges)
 
-        return violations.map {
+        return violations.sorted().map {
             StyleViolation(ruleDescription: type(of: self).description,
                            severity: configuration.severity,
                            location: Location(file: file, byteOffset: $0))
